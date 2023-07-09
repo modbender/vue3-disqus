@@ -3,6 +3,7 @@ import { App } from "vue";
 
 type SSOKeys = typeof SSO_KEYS;
 type PageConfigKeys = typeof PAGE_CONFIG_KEYS;
+
 interface DisqusConfigCallbacks extends Record<string, any> {
   [key: string]: any;
   preData?: (...args: any[]) => any;

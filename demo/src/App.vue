@@ -4,7 +4,6 @@
     <span>Comments (<DisqusCount identifier="/blog/1" />): </span>
     <DisqusComments identifier="/blog/1"  />
   </div>
-  <Disqus />
 </template>
 
 <script lang="ts">

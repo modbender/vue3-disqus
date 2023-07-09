@@ -17,8 +17,6 @@ interface DisqusCountAttrs {
 export default defineComponent({
   name: "DisqusCount",
 
-  emits: {},
-
   props: {
     url: String,
     shortname: String,
