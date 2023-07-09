@@ -159,7 +159,7 @@ export default defineComponent({
     function cbDisqus(disqusConfig: DisqusConfig) {
       CONSTANTS.CALLBACKS.forEach((cb) => {
         disqusConfig.callbacks[cb] = [
-          (e) => {
+          (e: any) => {
             emit(getEmitName(cb), e);
           },
         ];
