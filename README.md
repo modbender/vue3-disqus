@@ -3,18 +3,18 @@ Vue3 component to integrate Disqus comments in your application
 
 ## Features
 
-- Events for all disqus callbacks;
-- Lazy load (by IntersectionObserver);
-- Support a Page and SSO config with props validator;
-- Update disqus automatically when language changes occur;
-- Possibility to use the reset method (using ref);
-- DisqusCount component;
+- Events for all disqus callbacks
+- Lazy load (by IntersectionObserver)
+- Support a Page and SSO config with props validator
+- Update disqus automatically when language changes occur
+- Possibility to use the reset method (using ref)
+- DisqusCount component
 
 ## Contributing
 
-- Check the open issues or open a new issue to start a discussion around your feature idea or the bug you found;
-- Fork repository, make changes, add your name and link in the authors session CONTRIBUTING.md;
-- Send a pull request;
+- Check the open issues or open a new issue to start a discussion around your feature idea or the bug you found
+- Fork repository, make changes, add your name and link in the authors session CONTRIBUTING.md
+- Send a pull request
 
 ## License
 
