@@ -1,6 +1,12 @@
 <template>
-  <div id="disqus_thread" style="min-height: 200px" />
+  <div id="disqus_thread"></div>
 </template>
+
+<style>
+#disqus_thread {
+  min-height: 200px;
+}
+</style>
 
 <script lang="ts">
 import {
@@ -124,12 +130,12 @@ export default defineComponent({
       const date = +new Date();
       const d = document;
       const s = d.createElement("script");
-      s.setAttribute("id", "embed-disqus");
+      s.setAttribute("id", "embed-disqus-script");
       s.setAttribute("data-timestamp", date.toString());
       s.type = "text/javascript";
       s.async = true;
       s.src = `//${getShortname.value}.disqus.com/embed.js`;
-      (d.head || d.body).appendChild(s);
+      (d.body || d.head).appendChild(s);
     }
 
     function setBaseConfig(disqusConfig: DisqusConfig) {
