@@ -1,4 +1,4 @@
-# vue3-disqus for Vue 3
+# Vue 3 Disqus
 Vue3 component to integrate Disqus comments in your application
 
 ## Features
