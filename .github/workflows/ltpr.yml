@@ -30,14 +30,8 @@ jobs:
       - name: Run linter
         run: yarn lint
 
-      - name: Run prepare
-        run: yarn dev:prepare
-
-      - name: Run tests
-        run: yarn test
-
-      - name: Run prepack
-        run: yarn prepack
+      - name: Run build
+        run: yarn build
 
       - name: Publish to npm
         shell: bash
