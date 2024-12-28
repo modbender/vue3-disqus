@@ -117,7 +117,7 @@ export default defineComponent({
       init();
     }
 
-    function handleObserver(entries: IntersectionObserverEntryInit[]) {
+    function handleObserver(entries: IntersectionObserverEntry[]) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           observer.value?.disconnect();

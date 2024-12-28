@@ -1,4 +1,4 @@
-import { CALLBACKS, PAGE_CONFIG_KEYS, SSO_KEYS } from "./constants";
+import { PAGE_CONFIG_KEYS, SSO_KEYS } from "./constants";
 import { App } from "vue";
 
 type SSOKeys = typeof SSO_KEYS;
