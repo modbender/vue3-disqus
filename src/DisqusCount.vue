@@ -3,19 +3,19 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, onMounted, watch } from "vue";
-import { DisqusInstance } from "./types";
-import * as CONSTANTS from "./constants";
-import { draf } from "./utils";
+import { computed, defineComponent, inject, onMounted, watch } from 'vue';
+import { DisqusInstance } from './types';
+import * as CONSTANTS from './constants';
+import { draf } from './utils';
 
 interface DisqusCountAttrs {
   href: string;
-  "data-disqus-url"?: string | null;
-  "data-disqus-identifier": string;
+  'data-disqus-url'?: string | null;
+  'data-disqus-identifier': string;
 }
 
 export default defineComponent({
-  name: "DisqusCount",
+  name: 'DisqusCount',
 
   props: {
     url: String,
@@ -26,16 +26,16 @@ export default defineComponent({
     },
     tag: {
       type: String,
-      default: "span",
+      default: 'span',
     },
   },
 
   setup(props) {
-    const $disqus = <DisqusInstance>inject(CONSTANTS.DISQUS_CONFIG_KEY);
+    const $disqus = <DisqusInstance>inject(CONSTANTS.DISQUS_CONFIG_KEY, {});
     const getHref = computed(() =>
-      props.tag === "a" ? `${props.url}#disqus_thread` : "#"
+      props.tag === 'a' ? `${props.url}#disqus_thread` : '#'
     );
-    const getUrl = computed(() => (props.tag === "span" ? props.url : null));
+    const getUrl = computed(() => (props.tag === 'span' ? props.url : null));
     const getShortname = computed(() => {
       const shortname = props.shortname || $disqus.shortname;
       if (!shortname) throw new Error(CONSTANTS.ERROR_SHORTNAME_REQUIRED);
@@ -44,14 +44,14 @@ export default defineComponent({
 
     const disqusAttrs: DisqusCountAttrs = {
       href: getHref.value,
-      "data-disqus-url": getUrl.value,
-      "data-disqus-identifier": props.identifier,
+      'data-disqus-url': getUrl.value,
+      'data-disqus-identifier': props.identifier,
     };
 
     onMounted(init);
 
     function init() {
-      if ("DISQUSWIDGETS" in window) return draf(() => reset());
+      if ('DISQUSWIDGETS' in window) return draf(() => reset());
       loadCountScript();
       watch(
         () => props.url,
@@ -64,11 +64,11 @@ export default defineComponent({
     }
 
     function loadCountScript() {
-      if (document.getElementById("dsq-count-scr")) return;
+      if (document.getElementById('dsq-count-scr')) return;
       const d = document;
-      const s = d.createElement("script");
+      const s = d.createElement('script');
       s.async = true;
-      s.id = "dsq-count-scr";
+      s.id = 'dsq-count-scr';
       s.src = `//${getShortname.value}.disqus.com/count.js`;
       (d.head || d.body).appendChild(s);
     }

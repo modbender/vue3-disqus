@@ -18,14 +18,14 @@ import {
   getCurrentInstance,
   defineComponent,
   Ref,
-} from "vue";
+} from 'vue';
 
-import { DisqusConfig, DisqusInstance } from "./types";
-import * as CONSTANTS from "./constants";
-import { getEmitName } from "./utils";
+import { DisqusConfig, DisqusInstance } from './types';
+import * as CONSTANTS from './constants';
+import { getEmitName } from './utils';
 
 export default defineComponent({
-  name: "DisqusComments",
+  name: 'DisqusComments',
 
   props: {
     url: String,
@@ -49,7 +49,7 @@ export default defineComponent({
     },
     language: {
       type: String,
-      default: "en",
+      default: 'en',
     },
     lazy: {
       type: Boolean,
@@ -59,14 +59,14 @@ export default defineComponent({
       type: Object,
       default: () => ({
         root: null,
-        rootMargin: "300px",
+        rootMargin: '300px',
         threshold: 0.5,
       }),
     },
   },
 
   setup(props, { emit }) {
-    const $disqus = <DisqusInstance>inject(CONSTANTS.DISQUS_CONFIG_KEY);
+    const $disqus = <DisqusInstance>inject(CONSTANTS.DISQUS_CONFIG_KEY, {});
     const instance = getCurrentInstance();
     const observer = <Ref<IntersectionObserver | null>>ref(null);
 
@@ -107,7 +107,7 @@ export default defineComponent({
     }
 
     function observerDisqus() {
-      if ("IntersectionObserver" in window) {
+      if ('IntersectionObserver' in window) {
         observer.value = new IntersectionObserver(
           handleObserver,
           props.lazyConfig
@@ -129,10 +129,10 @@ export default defineComponent({
     function loadEmbedScript() {
       const date = +new Date();
       const d = document;
-      const s = d.createElement("script");
-      s.setAttribute("id", "embed-disqus-script");
-      s.setAttribute("data-timestamp", date.toString());
-      s.type = "text/javascript";
+      const s = d.createElement('script');
+      s.setAttribute('id', 'embed-disqus-script');
+      s.setAttribute('data-timestamp', date.toString());
+      s.type = 'text/javascript';
       s.async = true;
       s.src = `//${getShortname.value}.disqus.com/embed.js`;
       (d.body || d.head).appendChild(s);
