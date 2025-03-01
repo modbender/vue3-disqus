@@ -8,6 +8,7 @@
   "module": "./dist/vue3-disqus.js",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/vue3-disqus.js",
       "require": "./dist/vue3-disqus.cjs",
       "browser": "./dist/vue3-disqus.umd.cjs"
