@@ -1,8 +1,9 @@
-name: Lint, Test, Publish and Release
+name: Lint, Build, Publish and Release
 
 permissions:
   checks: write
   contents: write
+  id-token: write # Required for npm OIDC Trusted Publishing
 
 on:
   push:
@@ -17,28 +18,32 @@ jobs:
         with:
             fetch-depth: 0
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          always-auth: true
           node-version: "lts/*"
           registry-url: 'https://registry.npmjs.org'
-          cache: "yarn"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Run linter
-        run: yarn lint
+        run: pnpm lint
 
       - name: Run build
-        run: yarn build
+        run: pnpm build
 
-      - name: Publish to npm
+      # npm Trusted Publishing uses OIDC — no token needed.
+      # Configure once: npm trust github vue3-disqus --file ltpr.yml --repo modbender/vue3-disqus --allow-publish
+      - name: Publish to npm (OIDC Trusted Publishing)
         shell: bash
-        run: yarn publish --access public --no-git-checks
+        run: pnpm publish --access public --no-git-checks --provenance
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
 
       - name: Run github release
         run: npx --yes changelogithub@latest

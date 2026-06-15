@@ -1,8 +1,4 @@
-import { PAGE_CONFIG_KEYS, SSO_KEYS } from "./constants";
 import { App } from "vue";
-
-type SSOKeys = typeof SSO_KEYS;
-type PageConfigKeys = typeof PAGE_CONFIG_KEYS;
 
 interface DisqusConfigCallbacks extends Record<string, any> {
   [key: string]: any;
@@ -32,8 +28,8 @@ export interface DisqusConfig {
   title?: string;
   categoryID?: string;
   language?: string;
-  sso?: SSOKeys;
-  page?: PageConfigKeys;
+  sso: Record<string, any>;
+  page: Record<string, any>;
   callbacks: DisqusConfigCallbacks;
 }
 

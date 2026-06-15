@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [
     vue({ isProduction: true }),
     dts({
+      entryRoot: "src",
       insertTypesEntry: true,
     }),
   ],
